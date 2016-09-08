@@ -1,0 +1,5 @@
+# specifies the python requirements.
+# make sure you have python3 and python3-venv installed
+
+flask
+flask_sqlalchemy
