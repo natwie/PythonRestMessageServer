@@ -19,11 +19,13 @@ class Message(db.Model):
     username = db.Column(db.String(80), unique=False)
     message = db.Column(db.Text(), unique=False)
     created_date = db.Column(db.DateTime(), unique=False)
+    is_read = db.Column(db.Boolean, unique=False, default=False)
 
     def __init__(self, username, message):
         self.username = username
         self.message = message
         self.created_date = datetime.utcnow()
+        self.is_read = False
 
     def serialize(self):
         return {
@@ -31,6 +33,7 @@ class Message(db.Model):
             'username': self.username,
             'message': self.message,
             'created_date': self.created_date,
+            'is_read':self.is_read,
         }
 
     def __repr__(self):
@@ -65,4 +68,9 @@ def delete_message(id):
 @app.route("/api/v1.0/get_messages/")
 def get_messages():
     messages = Message.query.all()
+    return jsonify(json_list=[m.serialize() for m in messages])
+
+@app.route("/api/v1.0/get_unread_messages/")
+def get_unread_messages():
+    messages = Message.query.filter_by(is_read = False)
     return jsonify(json_list=[m.serialize() for m in messages])
