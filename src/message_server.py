@@ -68,6 +68,8 @@ def delete_message(id):
 @app.route("/api/v1.0/get_messages/")
 def get_messages():
     messages = Message.query.all()
+    for m in messages:
+        m.is_read = True
     return jsonify(json_list=[m.serialize() for m in messages])
 
 @app.route("/api/v1.0/get_unread_messages/")
