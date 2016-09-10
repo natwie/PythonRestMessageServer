@@ -14,7 +14,9 @@ This script will create a new virtual environment, install requirements and prov
 
 `./run.sh`
 
-# Ready requests are available in file make_some_requests.sh
+# Ready requests 
+
+`make_some_requests.sh`
 
 # Example Http requests
 __Creating a simple message__
