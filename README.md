@@ -35,8 +35,10 @@ __Get all messages__
 
 `curl http://localhost:5000/api/v1.0/messages/ -X PUT`
 
-__Get messags in range, sorted by time__
+__Get messages in range, sorted by time__
+
 `curl http://localhost:5000/api/v1.0/messages/range/3/4/ -X PUT`
 
-__Delete messages in rang__
+__Delete messages in range__
+
 `curl http://localhost:5000/api/v1.0/messages/delete/range/6/7/ -X DELETE`
