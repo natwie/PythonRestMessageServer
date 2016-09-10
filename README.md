@@ -14,19 +14,27 @@ This script will create a new virtual environment, install requirements and prov
 
 `./run.sh`
 
+# Ready requests are available in file make_some_requests.sh
+
 # Example Http requests
 __Creating a simple message__
 
-`curl http://localhost:5000/api/v1.0/create_message/ -H "Content-Type: application/json" -X POST -d '{"username":"natalia", "message": "Hej hej"}'`
+`curl http://localhost:5000/api/v1.0/message/create/ -H "Content-Type: application/json" -X POST -d '{"sender":"natalia", "recipient":"tomas", "message": "Hey hey"}'`
 
 __Deleting second message__
 
-`curl http://localhost:5000/api/v1.0/delete_message/2/ -X DELETE`
+`curl http://localhost:5000/api/v1.0/message/delete/2/ -X DELETE`
 
 __Get unread messages__
 
-`curl http://localhost:5000/api/v1.0/get_unread_messages/ -X PUT`
+`curl http://localhost:5000/api/v1.0/messages/unread/ -X PUT`
 
 __Get all messages__
 
-`curl http://localhost:5000/api/v1.0/get_messages/ -X PUT`
+`curl http://localhost:5000/api/v1.0/messages/ -X PUT`
+
+__Get messags in range, sorted by time__
+`curl http://localhost:5000/api/v1.0/messages/range/3/4/ -X PUT`
+
+__Delete messages in rang__
+`curl http://localhost:5000/api/v1.0/messages/delete/range/6/7/ -X DELETE`
