@@ -88,8 +88,12 @@ def get_messages():
 def get_messages_in_range(start, end):
     messages = Message.query.filter(Message.id >= start)\
                             .filter(Message.id <= end)\
-                            .order_by(Message.created_date)\
-                            .update({Message.is_read: True})
+                            .order_by(Message.created_date)
+
+    Message.query.filter(Message.id >= start) \
+                 .filter(Message.id <= end) \
+                 .update({Message.is_read: True})
+
     db.session.commit()
 
     return jsonify(messages=[m.serialize() for m in messages])

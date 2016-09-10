@@ -6,10 +6,10 @@
 
 # create virtual environment
 
-pyvenv trioptima_venv
+pyvenv server_venv
 
 #activate it
-source trioptima_venv/bin/activate
+source server_venv/bin/activate
 
 # install all the dependencies
 pip install -r requirements.txt
